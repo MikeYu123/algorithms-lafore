@@ -1,3 +1,7 @@
+from bubble_sort import BubbleSort
+from insert_sort import InsertSort
+import unittest
+
 class SortTest:
     def test_non_empty_1(self):
         self.assertEqual(self.sorter.sort([2,3,1]), [1,2,3])
@@ -10,3 +14,13 @@ class SortTest:
 
     def test_empty(self):
         self.assertEqual(self.sorter.sort([]), [])
+
+
+class TestInsertSort(SortTest, unittest.TestCase):
+    sorter = InsertSort()
+
+class TestBubbleSort(SortTest, unittest.TestCase):
+    sorter = BubbleSort()
+
+if __name__ == '__main__':
+    unittest.main()
