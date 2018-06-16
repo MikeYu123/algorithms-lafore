@@ -18,6 +18,18 @@ class TestArrayPriorityQueue(unittest.TestCase):
         with self.assertRaises(ValueError):
             queue.head()
 
+    def test_head_non_empty1(self):
+        queue = ArrayPriorityQueue()
+        queue.insert(1)
+        self.assertEqual(queue.head(), 1)
+
+    def test_head_non_empty2(self):
+        queue = ArrayPriorityQueue()
+        queue.insert(1)
+        queue.insert(3)
+        queue.insert(2)
+        self.assertEqual(queue.head(), 3)
+
     def test_insert_until_full(self):
         queue = ArrayPriorityQueue(5)
         for i in range(5):
@@ -31,13 +43,20 @@ class TestArrayPriorityQueue(unittest.TestCase):
         with self.assertRaises(ValueError):
             queue.insert(5)
 
+    def test_insert_random_to_sorted(self):
+        queue = ArrayPriorityQueue()
+        for i in range(3):
+            queue.insert(i)
+        queue.insert(1)
+        self.assertEqual(queue.list(), [0, 1, 1, 2])
+
     def test_insert_two_then_remove(self):
         queue = ArrayPriorityQueue()
         queue.insert(1)
         queue.insert(2)
         res = queue.remove()
-        self.assertEqual(res, 1)
-        self.assertEqual(queue.list(), [2])
+        self.assertEqual(res, 2)
+        self.assertEqual(queue.list(), [1])
 
     def test_remove_empty(self):
         queue = ArrayPriorityQueue()

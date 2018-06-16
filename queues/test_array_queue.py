@@ -18,6 +18,11 @@ class TestArrayQueue(unittest.TestCase):
         with self.assertRaises(ValueError):
             queue.head()
 
+    def test_head_non_empty(self):
+        queue = ArrayQueue()
+        queue.insert(1)
+        self.assertEqual(queue.head(), 1)
+
     def test_insert_until_full(self):
         queue = ArrayQueue(5)
         for i in range(5):

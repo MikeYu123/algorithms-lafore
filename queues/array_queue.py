@@ -9,7 +9,7 @@ class ArrayQueue:
         return self.min == self.max
 
     def head(self):
-        if self.isFull():
+        if self.isEmpty():
             raise ValueError("Reading head from empty queue")
         return self.array[self.min % self.size]
 
@@ -31,4 +31,8 @@ class ArrayQueue:
 
     # Used only for testing
     def list(self):
-        return self.array[self.min:self.max]
+        # TODO: doesnt work for full cases
+        if self.min % self.size >= self.max % self.size:
+            return self.array[self.min % self.size:] + self.array[:self.max % self.size]
+        else:
+            return self.array[self.min:self.max]

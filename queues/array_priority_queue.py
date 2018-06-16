@@ -1,4 +1,4 @@
-class ArrayStack:
+class ArrayPriorityQueue:
     def __init__(self, size = 10):
         self.array = [None] * size
         self.size = size
@@ -7,23 +7,27 @@ class ArrayStack:
     def isEmpty(self):
         return self.max == -1
 
-    def peek(self):
+    def head(self):
         if self.isEmpty():
-            raise ValueError("Peeking empty stack")
+            raise ValueError("Reading head from empty queue")
         return self.array[self.max]
 
     def isFull(self):
         return self.max == self.size - 1
 
-    def push(self, element):
+    def insert(self, element):
         if self.isFull():
-            raise ValueError("Pushing to full stack")
+            raise ValueError("Adding to full queue")
+        i = self.max
+        while (i >= 0 and self.array[i] >= element):
+            self.array[i + 1] = self.array[i]
+            i -= 1
+        self.array[i + 1] = element
         self.max += 1
-        self.array[self.max] = element
 
-    def pop(self):
+    def remove(self):
         if (self.isEmpty()):
-            raise ValueError("Peeking from empty stack")
+            raise ValueError("Removing from empty queue")
         element = self.array[self.max]
         self.max -= 1
         return element

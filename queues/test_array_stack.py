@@ -15,6 +15,16 @@ class TestArrayStack(unittest.TestCase):
         self.assertEqual(stack.list(), [1, 2])
         self.assertEqual(stack.peek(), 2)
 
+    def test_peek_empty(self):
+        stack = ArrayStack()
+        with self.assertRaises(ValueError):
+            stack.peek()
+
+    def test_peek_non_empty(self):
+        stack = ArrayStack()
+        stack.push(1)
+        self.assertEqual(stack.peek(), 1)
+
     def test_push_until_full(self):
         stack = ArrayStack(5)
         for i in range(5):
