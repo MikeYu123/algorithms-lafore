@@ -23,7 +23,7 @@ class ArrayStack:
 
     def pop(self):
         if (self.isEmpty()):
-            raise ValueError("Peeking from empty stack")
+            raise ValueError("Popping from empty stack")
         element = self.array[self.max]
         self.max -= 1
         return element
