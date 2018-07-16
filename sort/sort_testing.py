@@ -1,5 +1,6 @@
 from bubble_sort import BubbleSort
 from insert_sort import InsertSort
+from list_insertion_sort import ListInsertionSort
 import unittest
 
 class SortTest:
@@ -21,6 +22,9 @@ class TestInsertSort(SortTest, unittest.TestCase):
 
 class TestBubbleSort(SortTest, unittest.TestCase):
     sorter = BubbleSort()
+
+class TestListInsertionSort(SortTest, unittest.TestCase):
+    sorter = ListInsertionSort()
 
 if __name__ == '__main__':
     unittest.main()
